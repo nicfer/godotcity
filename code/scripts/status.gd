@@ -21,15 +21,25 @@ var loan_taken = 0
 var loan_max = 10000
 var loan_step = 1000
 
-var tools = [tset.tile_get_texture(2),tset.tile_get_texture(5)\
-						,tset.tile_get_texture(9),tset.tile_get_texture(10)]
+var tools = {\
+		"place":{\
+			0:-1,\
+			1:13,\
+			2:1,\
+			3:16,\
+			4:14\
+		}\
+	}
 
 func _ready():
-	for t in tools:
-		t.set_size_override(Vector2(16,16))
-		buttons.add_icon_button(t)
 	refresh_loan_buttons()
 	set_fixed_process(true)
+#	for t in tools.textures:
+#		tools.textures[t].set_size_override(Vector2(16,16))
+#		buttons.add_icon_button(tools.textures[t])
+
+func get_tool():
+	return tools.place[buttons.get_selected()]
 
 func next_hour():
 	ticks -= ticks_max

@@ -9,7 +9,7 @@ func _input(e):
 	if e.type == InputEvent.MOUSE_BUTTON:
 		if e.y >= 16:
 			if e.is_pressed() and e.button_index == 1:
-				terrain.click_on(e.pos+get_pos())#-Vector2(0,16))
+				terrain.click_on(e.pos+get_pos())
 
 func _fixed_process(d):
 	var _dir = Vector2(0,0)
@@ -23,6 +23,4 @@ func _fixed_process(d):
 		_dir.x += 1
 	if Input.is_action_pressed("camera_fast"):
 		_dir *= 3
-	if _dir != Vector2(0,0):
-		print(_dir)
 	translate(_dir)

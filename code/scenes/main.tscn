@@ -1,12 +1,16 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://code/tilesets/tset.xml" type="TileSet" id=1]
 [ext_resource path="res://code/scripts/map.gd" type="Script" id=2]
 [ext_resource path="res://code/scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://code/scripts/status.gd" type="Script" id=4]
 [ext_resource path="res://data/images/tools/center.png" type="Texture" id=5]
-[ext_resource path="res://data/images/tools/loan_take.png" type="Texture" id=6]
-[ext_resource path="res://data/images/tools/loan_pay.png" type="Texture" id=7]
+[ext_resource path="res://data/images/tools/bomb.png" type="Texture" id=6]
+[ext_resource path="res://data/images/tools/road1.png" type="Texture" id=7]
+[ext_resource path="res://data/images/tools/3mines.png" type="Texture" id=8]
+[ext_resource path="res://data/images/tools/zone_res.png" type="Texture" id=9]
+[ext_resource path="res://data/images/tools/loan_take.png" type="Texture" id=10]
+[ext_resource path="res://data/images/tools/loan_pay.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -40,7 +44,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray(  )
+tile_data = IntArray( 262145, 1, 262146, 2, 262147, 3, 262148, 4, 262149, 5, 262150, 6, 262151, 7, 262152, 8, 262153, 9, 262154, 10, 262155, 11, 262156, 12, 327682, 2, 458754, 3, 458755, 3, 458756, 4, 458758, 2, 524292, 6, 524293, 3, 524294, 11, 589830, 2, 655365, 3, 655366, 12, 655367, 3, 720902, 2 )
 script/script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -127,17 +131,29 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 128.0
+margin/right = 106.0
 margin/bottom = 16.0
 custom_styles/selected = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 flat = true
-button/count = 1
+button/count = 5
 button/min_button_size = 16.0
 button/align = 23
 button/0/text = ""
 button/0/tooltip = ""
 button/0/icon = ExtResource( 5 )
+button/1/text = ""
+button/1/tooltip = ""
+button/1/icon = ExtResource( 6 )
+button/2/text = ""
+button/2/tooltip = ""
+button/2/icon = ExtResource( 7 )
+button/3/text = ""
+button/3/tooltip = ""
+button/3/icon = ExtResource( 8 )
+button/4/text = ""
+button/4/tooltip = ""
+button/4/icon = ExtResource( 9 )
 button/selected = 0
 
 [node name="loan_up" type="TextureButton" parent="CanvasLayer/Panel"]
@@ -155,7 +171,7 @@ margin/bottom = 16.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 10 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -174,7 +190,7 @@ margin/bottom = 16.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
+textures/normal = ExtResource( 11 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
