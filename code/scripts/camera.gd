@@ -1,5 +1,6 @@
 extends Camera2D
 onready var terrain = get_node("../terrain")
+var lpress = null
 
 func _ready():
 	set_process_input(true)
@@ -8,8 +9,16 @@ func _ready():
 func _input(e):
 	if e.type == InputEvent.MOUSE_BUTTON:
 		if e.y >= 16:
-			if e.is_pressed() and e.button_index == 1:
-				terrain.click_on(e.pos+get_pos())
+			if e.button_index == 1:
+				lpress = null
+				if e.is_pressed():
+					lpress = terrain.click_on(e.pos+get_pos())
+	elif e.type == InputEvent.MOUSE_MOTION:
+		if e.y >= 16:
+			if lpress != null:
+				var nlpress = terrain.world_to_map(e.pos)
+				if nlpress != lpress:
+					lpress = terrain.click_on(e.pos+get_pos())
 
 func _fixed_process(d):
 	var _dir = Vector2(0,0)

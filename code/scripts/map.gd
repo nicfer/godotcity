@@ -45,6 +45,7 @@ func click_on(p):
 			place_road(pm)
 		else:
 			set_cellv(pm,brush)
+	return pm
 
 #	var adj = get_adjacent(pm)
 #	for row in adj:
