@@ -1,52 +1,79 @@
 extends Node
+onready var root = get_node("/root/Node")
+onready var terrain = root.get_node("bg")
+var cost = 10
+
+func on_click(pm):
+	for t in terrain.get_children():
+		if t.get_type() != "TileMap": continue
+		if t.get_cellv(pm) != -1: return -1
+	var nroad = Road.new()
+	terrain.add_child(nroad)
+	nroad.init(pm)
 
 class Road extends Node:
-	onready var root = get_node("/root/Node")
-	onready var terrain = get_node("..")
-
 	const teq = {
-		2:["u","d","ud"],3:["l","r","lr"],4:["udlr"],
-		5:["ul"],6:["dl"],7:["ur"],8:["dr"],
-		9:["udl"],10:["dlr"],11:["ulr"],12:["udr"]
+		1:["u","d","ud"],2:["l","r","lr"],3:["udlr"],
+		4:["ul"],5:["dl"],6:["ur"],7:["dr"],
+		8:["udl"],9:["dlr"],10:["ulr"],11:["udr"]
 	}
 
+	onready var root = get_node("/root/Node")
+	onready var terrain = root.get_node("bg")
 	var pos = Vector2()
 	var ady = {
 		"u":null,"d":null,"l":null,"r":null
 	}
 	var ntile = 0
 
+	func init(p):
+		pos = p
+		add_to_group("roads")
+		add_to_group("destroyable")
+		look_adyacent()
+		var y = [self]
+		for a in ady:
+			if ady[a] == null: continue
+			ady[a].set_adyacent(get_opposite(a),self)
+			y.append(ady[a])
+		for r in y:
+			r.set_rtile()
+		for uh in get_tree().get_nodes_in_group("unemployed_houses"):
+			if is_ady_to_point(uh.pos):
+				uh.can_grow()
+		return ntile
+
 	func set_adyacent(p,r):
 		ady[p] = r
-#		print(pos,ady)
-#		set_tile()
 
-	func look_adyacent(r):
-		var d = self.pos - r.pos
+	func is_ady_to_point(p):
+		return get_ady_points(p) != null
+
+	func get_ady_points(p):
+		var d = pos - p
 		if d.x == 0:#u,d
 			if d.y == 1:#u
-				set_adyacent("u",r)
-				r.set_adyacent("d",self)
 				return "u"
 			elif d.y == -1:
-				set_adyacent("d",r)
-				r.set_adyacent("u",self)
 				return "d"
 		elif d.y == 0:#l,r
 			if d.x == 1:#l
-				set_adyacent("l",r)
-				r.set_adyacent("r",self)
 				return "l"
 			elif d.x == -1:
-				set_adyacent("r",r)
-				r.set_adyacent("l",self)
 				return "r"
+
+	func look_adyacent():
+		for a in ady: ady[a] = null
+		for r in get_tree().get_nodes_in_group("roads"):
+			var d = get_ady_points(r.pos)
+			if d != null:
+				set_adyacent(d,r)
 
 	func eq_tile(rd):
 		for t in teq:
 			if teq[t].has(rd):
 				return t
-		return 1
+		return 0
 
 	func set_tile():
 		var rd = ""
@@ -58,22 +85,28 @@ class Road extends Node:
 			rd += "l"
 		if ady.r != null:#r
 			rd += "r"
+		print(rd)
 		ntile = eq_tile(rd)
-#		terrain.set_cellv(terrain.map_to_world(pos),ntile)
 
-	func set_rtile():
+	func set_rtile(t=null):
 		set_tile()
-		terrain.set_cellv(pos,ntile)
+		if t == null: t = ntile
+		terrain.set_road(pos,t)
 
-	func init(p):
-		pos = p
-		for r in get_tree().get_nodes_in_group("roads"):
-			if look_adyacent(r) != null:
-				r.set_rtile()
-		set_tile()
-		add_to_group("roads")
-		return ntile
-#		for r in range(4):
-#			if ady[r] != null:
-#				ady[r].set_adyacent(r,self)
-#				ady[r].set_tile()
+	func get_opposite(d):
+		if d == "d":
+			return "u"
+		if d == "u":
+			return "d"
+		if d == "r":
+			return "l"
+		if d == "l":
+			return "r"
+
+	func destroy():
+		for a in ady:
+			if ady[a] != null:
+				ady[a].set_adyacent(get_opposite(a),null)
+				ady[a].set_rtile()
+		terrain.set_road(pos,-1)
+		queue_free()

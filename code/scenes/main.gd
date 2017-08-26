@@ -1,12 +1,12 @@
 extends Node2D
 
-var lclasses = {
-	"House":preload("res://code/scripts/house.gd")
-	,"Road":preload("res://code/scripts/road.gd")
-}
-
-static func fib_growth(pob):
-	pass#[2,3]->1;[4,5]->2;[]
-
-func get_class(c):
-	return lclasses[c].new().get(c).new()
+#var lclasses = {
+#	"House":preload("res://code/scripts/house.gd")
+#	,"Road":preload("res://code/scripts/road.gd")
+#	,"Mine":preload("res://code/scripts/mine.gd")
+#	,"Destroy":preload("res://code/scripts/destroy.gd")
+#	,"Center":preload("res://code/scripts/center.gd")
+#}
+#
+#func get_class(c):
+#	return lclasses[c].new()

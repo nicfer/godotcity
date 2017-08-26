@@ -1,6 +1,8 @@
 extends TileMap
 const MAPSIZE = Vector2(32,32)
-onready var panel = get_node("../CanvasLayer/Panel")
+onready var roads = get_node("roads")
+onready var builds = get_node("builds")
+onready var tools = get_node("../CanvasLayer/tools")
 
 func _ready():
 	for x in range(MAPSIZE.x):
@@ -9,10 +11,17 @@ func _ready():
 
 func click_on(p):
 	var pm = world_to_map(p)
-	var res = panel.click_on(pm)
-	if res >= 0:
-		set_cellv(pm,res)
+	tools.click_on(pm)
+	return pm
 
+func set_road(p,r):
+	roads.set_cellv(p,r)
+
+func set_builds(p,r):
+	builds.set_cellv(p,r)
+
+#	if res >= 0:
+#		set_cellv(pm,res)
 #res != null and
 #func get_ady_road(pm):
 #	var rd = 0
