@@ -11,23 +11,16 @@ func on_click(pm):
 	terrain.add_child(nroad)
 	nroad.init(pm)
 
-class Road extends Node:
+class Road extends "res://code/scripts/destroyable.gd".Destroyable:
 	const teq = {
 		1:["u","d","ud"],2:["l","r","lr"],3:["udlr"],
 		4:["ul"],5:["dl"],6:["ur"],7:["dr"],
 		8:["udl"],9:["dlr"],10:["ulr"],11:["udr"]
 	}
-
-	onready var root = get_node("/root/Node")
-	onready var terrain = root.get_node("bg")
-	var pos = Vector2()
-	var ady = {
-		"u":null,"d":null,"l":null,"r":null
-	}
 	var ntile = 0
 
 	func init(p):
-		pos = p
+		.init(p)
 		add_to_group("roads")
 		add_to_group("destroyable")
 		look_adyacent()
@@ -38,7 +31,7 @@ class Road extends Node:
 			y.append(ady[a])
 		for r in y:
 			r.set_rtile()
-		for uh in get_tree().get_nodes_in_group("unemployed_houses"):
+		for uh in get_tree().get_nodes_in_group("houses"):
 			if is_ady_to_point(uh.pos):
 				uh.can_grow()
 		return ntile
