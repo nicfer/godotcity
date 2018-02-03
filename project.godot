@@ -14,6 +14,10 @@ config/name="godotcity"
 run/main_scene="res://code/root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://code/globals.gd"
+
 [display]
 
 window/size/height=800
