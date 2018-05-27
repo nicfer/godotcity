@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex"
+path="res://.import/eye.png-bde8e847cf611c8a4251ba1a5dc7aedb.stex"
 
 [deps]
 
-source_file="res://assets/background.png"
-source_md5="eb72956b76c2f9774c6e65cb426abf12"
+source_file="res://assets/rosruc/eye.png"
+source_md5="ef650a4115c82ca45f21e6bd6df2062d"
 
-dest_files=[ "res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex" ]
-dest_md5="ee3a2c1ff5dbc5875d1b4885ccccda65"
+dest_files=[ "res://.import/eye.png-bde8e847cf611c8a4251ba1a5dc7aedb.stex" ]
+dest_md5="bf03ab07f4263b71516dca017f53aa98"
 
 [params]
 

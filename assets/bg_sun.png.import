@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex"
+path="res://.import/bg_sun.png-bb777d01872f174c240ba002e41a1456.stex"
 
 [deps]
 
-source_file="res://assets/background.png"
-source_md5="eb72956b76c2f9774c6e65cb426abf12"
+source_file="res://assets/bg_sun.png"
+source_md5="f5b69313651e89598e5c42007290e06d"
 
-dest_files=[ "res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex" ]
-dest_md5="ee3a2c1ff5dbc5875d1b4885ccccda65"
+dest_files=[ "res://.import/bg_sun.png-bb777d01872f174c240ba002e41a1456.stex" ]
+dest_md5="ec5118564295e5e430163733f2947454"
 
 [params]
 

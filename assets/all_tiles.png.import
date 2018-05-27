@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex"
+path="res://.import/all_tiles.png-33cef8a00aa861a848c871b06cd7a2d2.stex"
 
 [deps]
 
-source_file="res://assets/background.png"
-source_md5="eb72956b76c2f9774c6e65cb426abf12"
+source_file="res://assets/all_tiles.png"
+source_md5="0876f0c300718b958c7796bc552ae984"
 
-dest_files=[ "res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex" ]
-dest_md5="ee3a2c1ff5dbc5875d1b4885ccccda65"
+dest_files=[ "res://.import/all_tiles.png-33cef8a00aa861a848c871b06cd7a2d2.stex" ]
+dest_md5="0d686c94ba5cd9a9a23e7dabe59d1e49"
 
 [params]
 

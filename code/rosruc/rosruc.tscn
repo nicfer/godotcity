@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://code/rosruc/rosruc.gd" type="Script" id=1]
+[ext_resource path="res://assets/rosruc/face.png" type="Texture" id=2]
+[ext_resource path="res://assets/rosruc/body.png" type="Texture" id=3]
+[ext_resource path="res://assets/rosruc/leg.png" type="Texture" id=4]
+[ext_resource path="res://assets/rosruc/eye.png" type="Texture" id=5]
+[ext_resource path="res://code/rosruc/movements.gd" type="Script" id=6]
+[ext_resource path="res://code/rosruc/animations.gd" type="Script" id=7]
+
+[node name="rosruc" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 784
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.8
+drag_margin_top = 0.8
+drag_margin_right = 0.8
+drag_margin_bottom = 0.8
+editor_draw_screen = false
+editor_draw_limits = true
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
+
+[node name="face" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 9, 9 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="body" type="Sprite" parent="face" index="0"]
+
+modulate = Color( 0.498039, 0.498039, 1, 1 )
+show_behind_parent = true
+texture = ExtResource( 3 )
+centered = false
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Visibility" ]
+
+[node name="leg1" type="Sprite" parent="face/body" index="0"]
+
+show_behind_parent = true
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 9, 27 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2, 4 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="leg2" type="Sprite" parent="face/body" index="1"]
+
+show_behind_parent = true
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 21, 27 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2, 4 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="eyes" type="Sprite" parent="face" index="1"]
+
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( 10, 10 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="movements" type="Node" parent="." index="2"]
+
+script = ExtResource( 6 )
+
+[node name="animations" type="Node" parent="." index="3"]
+
+script = ExtResource( 7 )
+
+
