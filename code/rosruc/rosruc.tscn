@@ -8,21 +8,22 @@
 [ext_resource path="res://code/rosruc/movements.gd" type="Script" id=6]
 [ext_resource path="res://code/rosruc/animations.gd" type="Script" id=7]
 
-[node name="rosruc" type="Node2D" index="0"]
+[node name="rosruc" type="Node2D"]
 
+position = Vector2( 528, 528 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
+[node name="cam" type="Camera2D" parent="." index="0"]
 
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 0.75, 0.75 )
 limit_left = 0
-limit_top = 0
-limit_right = 1024
-limit_bottom = 784
+limit_top = 16
+limit_right = 1056
+limit_bottom = 832
 limit_smoothed = false
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -30,10 +31,10 @@ smoothing_enabled = false
 smoothing_speed = 5.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.8
-drag_margin_top = 0.8
-drag_margin_right = 0.8
-drag_margin_bottom = 0.8
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
 editor_draw_screen = false
 editor_draw_limits = true
 editor_draw_drag_margin = false
@@ -43,7 +44,7 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
 
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( 9, 9 )
+offset = Vector2( 25, 41 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="body" type="Sprite" parent="face" index="0"]
@@ -52,7 +53,8 @@ modulate = Color( 0.498039, 0.498039, 1, 1 )
 show_behind_parent = true
 texture = ExtResource( 3 )
 centered = false
-region_rect = Rect2( 0, 0, 32, 32 )
+offset = Vector2( 16, 32 )
+region_rect = Rect2( 0, 0, 27, 27 )
 _sections_unfolded = [ "Offset", "Region", "Visibility" ]
 
 [node name="leg1" type="Sprite" parent="face/body" index="0"]
@@ -60,7 +62,7 @@ _sections_unfolded = [ "Offset", "Region", "Visibility" ]
 show_behind_parent = true
 texture = ExtResource( 4 )
 centered = false
-offset = Vector2( 9, 27 )
+offset = Vector2( 25, 59 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2, 4 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
@@ -70,7 +72,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 show_behind_parent = true
 texture = ExtResource( 4 )
 centered = false
-offset = Vector2( 21, 27 )
+offset = Vector2( 37, 59 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2, 4 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
@@ -79,7 +81,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 
 texture = ExtResource( 5 )
 centered = false
-offset = Vector2( 10, 10 )
+offset = Vector2( 26, 42 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="movements" type="Node" parent="." index="2"]

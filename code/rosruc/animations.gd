@@ -4,21 +4,23 @@ var anim_r = 0
 var anim_y = 0
 
 func anim(x,y):
-	anim_y += y
-	if (anim_y < 0):
-		anim_y = 3
-	elif (anim_y > 3):
+	if (y == 0):
 		anim_y = 0
+	else:
+		anim_y += y
+		if (anim_y < 0):
+			anim_y = 3
+		elif (anim_y > 3):
+			anim_y = 0
 	if (x > 0):
 		anim_r = (anim_r + 1) % 4
 		anim_r()
 	elif (x < 0):
 		anim_l = (anim_l + 1) % 4
 		anim_l()
-	if (x == 0 and y == 0):
+	else:
 		anim_l = 0
 		anim_r = 0
-		anim_y = 0
 	anim_h()
 	
 func anim_h():
