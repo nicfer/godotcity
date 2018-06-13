@@ -7,6 +7,7 @@ var limit_r
 var base_speed = 3.0
 var sprint = 3
 var active = false
+var def_zoom = 0.75
 
 func map_created():
 	limit_d = (Globals.gn("bg").mapsize.y + 1) * ($"..".tilesize - 1)
@@ -27,11 +28,16 @@ func _process(d):
 			dir.x = speed
 		if (Input.is_action_pressed("rosruc_left")):
 			dir.x -= speed
-		$"../face/eyes".position = Vector2(sign(dir.x),sign(dir.y))
-		$"..".position += dir
-		$"..".position.x = clamp($"..".position.x, limit_l, limit_r)
-		$"..".position.y = clamp($"..".position.y, limit_u, limit_d)
-		$"../../CanvasLayer/debug".text = str($"..".position) + "    " + str(
-			(Vector2(int($"..".position.x / 32),int($"..".position.y / 32)))
-		)
+		if (Input.is_action_pressed("rosruc_zoom_in")):
+			$"..".add_zoom(-0.001)
+		if (Input.is_action_pressed("rosruc_zoom_out")):
+			$"..".add_zoom(0.001)
+		$"../face/eyes".looking_at(dir)
+		$"..".move(dir)
+		$"../../CanvasLayer/debug".text =\
+			str($"..".position) + "    "\
+		+ str((Vector2(
+					int($"..".position.x / 32)
+				, int($"..".position.y / 32)
+			)))
 		$"../animations".anim( int(sign(dir.x)) , int(sign(dir.y)) )

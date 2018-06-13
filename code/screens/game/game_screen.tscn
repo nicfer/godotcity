@@ -37,13 +37,12 @@
 2/shapes = [  ]
 _sections_unfolded = [ "0", "1", "2" ]
 
-[node name="game_screen" type="Node2D" index="0"]
+[node name="game_screen" type="Node2D"]
 
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="bg" type="TileMap" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 0, 16 )
 mode = 0
 tile_set = SubResource( 1 )
@@ -68,8 +67,20 @@ _sections_unfolded = [ "Cell", "Transform" ]
 [node name="grass_anim" type="Node" parent="bg" index="0"]
 
 script = ExtResource( 3 )
+tile_to_anim = 0
+tile_orig_x = 128
+tile_orig_y = 0
+anim_tiles = 4
 
-[node name="map_loader" type="Node" parent="bg" index="1"]
+[node name="water_anim" type="Node" parent="bg" index="1"]
+
+script = ExtResource( 3 )
+tile_to_anim = 1
+tile_orig_x = 256
+tile_orig_y = 0
+anim_tiles = 4
+
+[node name="map_loader" type="Node" parent="bg" index="2"]
 
 script = ExtResource( 4 )
 
