@@ -4,7 +4,7 @@ const titlesize = 16
 const yoffset = 31
 const tilesize = 32
 
-func map_created():
+func map_created(m):
 	position.x = Globals.gn("bg").mapsize.x * tilesize * 0.5
 	position.y = Globals.gn("bg").mapsize.y * tilesize * 0.5 + titlesize
 # set_cam_limit():
@@ -13,7 +13,7 @@ func map_created():
 	$cam.limit_bottom = (Globals.gn("bg").mapsize.y)\
 		* (tilesize + 1) + sprsize.y + titlesize
 	$cam.limit_top = 48 - 16 * $cam.zoom.y
-	$movements.map_created()
+	$movements.map_created(m)
 #	prints($cam.limit_bottom,$cam.limit_right,position)
 
 func set_zoom(z):
@@ -24,7 +24,7 @@ func set_zoom(z):
 func add_zoom(z):
 	set_zoom($cam.zoom.y + z)
 
-func move(d):
+func move(dir,u,l,d,r):
 	position += dir
-	position.x = clamp(position.x, limit_l, limit_r)
-	position.y = clamp(position.y, limit_u, limit_d)
+	position.x = clamp(position.x, l, r)
+	position.y = clamp(position.y, u, d)

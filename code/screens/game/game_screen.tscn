@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/all_tiles.png" type="Texture" id=1]
 [ext_resource path="res://code/map.gd" type="Script" id=2]
 [ext_resource path="res://code/tiles/anims/grass_anim.gd" type="Script" id=3]
 [ext_resource path="res://code/screens/game/map_loader.gd" type="Script" id=4]
-[ext_resource path="res://code/rosruc/rosruc.tscn" type="PackedScene" id=5]
+[ext_resource path="res://code/tiles/data/map_data.gd" type="Script" id=5]
+[ext_resource path="res://code/rosruc/rosruc.tscn" type="PackedScene" id=6]
+[ext_resource path="res://code/rosruc/brushes.gd" type="Script" id=7]
+[ext_resource path="res://code/brushes/check.gd" type="Script" id=8]
+[ext_resource path="res://code/brushes/delete.gd" type="Script" id=9]
+[ext_resource path="res://code/brushes/road.gd" type="Script" id=10]
+[ext_resource path="res://code/brushes/fight.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 
@@ -37,7 +43,7 @@
 2/shapes = [  ]
 _sections_unfolded = [ "0", "1", "2" ]
 
-[node name="game_screen" type="Node2D"]
+[node name="game_screen" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Offset", "Transform" ]
 
@@ -84,6 +90,10 @@ anim_tiles = 4
 
 script = ExtResource( 4 )
 
+[node name="tile_data" type="Node" parent="bg" index="3"]
+
+script = ExtResource( 5 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
 
 layer = 1
@@ -124,6 +134,26 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="rosruc" parent="." index="2" instance=ExtResource( 5 )]
+[node name="rosruc" parent="." index="2" instance=ExtResource( 6 )]
+
+[node name="brushes" type="Node" parent="." index="3"]
+
+script = ExtResource( 7 )
+
+[node name="check" type="Node" parent="brushes" index="0"]
+
+script = ExtResource( 8 )
+
+[node name="delete" type="Node" parent="brushes" index="1"]
+
+script = ExtResource( 9 )
+
+[node name="road" type="Node" parent="brushes" index="2"]
+
+script = ExtResource( 10 )
+
+[node name="fight" type="Node" parent="brushes" index="3"]
+
+script = ExtResource( 11 )
 
 

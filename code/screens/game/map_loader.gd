@@ -9,6 +9,11 @@ func fload(f):
 	file.open("res://assets/maps/"+f+".map",File.READ)
 	cont = file.get_as_text()
 	file.close()
+	var nt = next_tile()
+	while (!nt.eof):
+		$"..".set_cell(nt.y,nt.x,nt.tile)
+		nt = next_tile()
+	return mapsize
 
 func next_char():
 	if (cont.length() == 0):
